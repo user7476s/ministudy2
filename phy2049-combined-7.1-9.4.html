@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PHY 2049 — Study Guide &amp; Practice Exam · §7.1–9.4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<style>
+
+  :root{
+    --bg:#f7f6f3; --card:#ffffff; --ink:#16161d; --muted:#5b5b6b;
+    --line:#e6e3dc; --blue:#2563eb; --blue-soft:#eaf1fe; --orange:#ea580c;
+    --orange-soft:#fdeee2; --green:#0f8a5f; --violet:#6d28d9; --code:#0f172a;
+    --shadow:0 1px 2px rgba(20,20,30,.05),0 8px 24px rgba(20,20,30,.05);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.62;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:940px;margin:0 auto;padding:0 20px 120px}
+  header.hero{padding:54px 0 26px;border-bottom:1px solid var(--line);margin-bottom:8px}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:500}
+  h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2.35rem;line-height:1.08;margin:.35em 0 .25em;letter-spacing:-.02em}
+  .sub{color:var(--muted);max-width:62ch;font-size:1.02rem}
+  .disc{margin-top:18px;background:var(--orange-soft);border:1px solid #f3c7a8;color:#8a3b0e;border-radius:12px;padding:11px 15px;font-size:.86rem}
+  nav.toc{position:sticky;top:0;z-index:40;background:rgba(247,246,243,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 -20px 34px;padding:11px 20px;display:flex;gap:7px;flex-wrap:wrap}
+  nav.toc a{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);text-decoration:none;padding:5px 10px;border-radius:8px;border:1px solid transparent}
+  nav.toc a:hover{background:var(--blue-soft);color:var(--blue);border-color:#cfe0fd}
+  section{margin:0 0 48px}
+  .chap{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.62rem;letter-spacing:-.01em;padding-top:14px;margin:44px 0 6px;border-top:2px solid var(--ink)}
+  .chap .n{color:var(--blue)}
+  h3{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.16rem;margin:30px 0 4px}
+  h3 .sec{font-family:'JetBrains Mono',monospace;color:var(--orange);font-size:.86em;margin-right:8px}
+  p{margin:.55em 0}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);margin:16px 0}
+  .keybox{background:var(--blue-soft);border:1px solid #cfe0fd;border-radius:12px;padding:14px 18px;margin:14px 0}
+  .keybox .lab{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);font-weight:600}
+  .eq{background:#0f172a;color:#e7edf7;border-radius:12px;padding:16px 18px;margin:14px 0;overflow-x:auto;font-size:1.05rem}
+  .eq .katex{color:#eef3fb}
+  ul{margin:.4em 0 .4em;padding-left:1.25em}
+  li{margin:.25em 0}
+  strong{font-weight:600}
+  .pill{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;background:#eee9df;color:#6a634f;border-radius:999px;padding:2px 9px;margin-right:5px}
+  table.ref{width:100%;border-collapse:collapse;font-size:.92rem;margin:14px 0}
+  table.ref th,table.ref td{text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+  table.ref th{font-family:'Space Grotesk';font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  table.ref td:first-child{width:42%}
+  .worked{border-left:3px solid var(--orange);padding-left:16px;margin:14px 0}
+  .worked .tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--orange);text-transform:uppercase;letter-spacing:.08em}
+  .calc{background:#fbfaf7;border:1px dashed #d4cfc2;border-radius:12px;padding:16px 18px;margin:16px 0}
+  .calc h4{margin:0 0 10px;font-family:'Space Grotesk';font-size:1rem}
+  .calc label{display:block;font-size:.82rem;color:var(--muted);margin:8px 0 2px;font-weight:500}
+  .calc input,.calc select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:.9rem;background:#fff}
+  .calc .row{display:flex;gap:12px;flex-wrap:wrap}
+  .calc .row>div{flex:1;min-width:120px}
+  .calc .out{margin-top:12px;background:#0f172a;color:#7dd3a8;font-family:'JetBrains Mono',monospace;padding:11px 14px;border-radius:8px;font-size:.95rem}
+  .mini{font-size:.82rem;color:var(--muted)}
+  .warn{color:var(--orange);font-weight:600}
+  hr{border:none;border-top:1px solid var(--line);margin:22px 0}
+  footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+
+
+  :root{
+    --bg:#f7f6f3;--card:#fff;--ink:#16161d;--muted:#5b5b6b;--line:#e6e3dc;
+    --blue:#2563eb;--blue-soft:#eaf1fe;--orange:#ea580c;--orange-soft:#fdeee2;
+    --green:#0f8a5f;--green-soft:#e5f5ee;--red:#dc2626;--red-soft:#fdeaea;
+    --shadow:0 1px 2px rgba(20,20,30,.05),0 8px 24px rgba(20,20,30,.05);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:820px;margin:0 auto;padding:0 18px 140px}
+  header.hero{padding:48px 0 20px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);font-weight:500}
+  h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2.1rem;line-height:1.1;margin:.3em 0 .2em;letter-spacing:-.02em}
+  .sub{color:var(--muted);max-width:60ch;font-size:.98rem}
+  .disc{margin-top:16px;background:var(--orange-soft);border:1px solid #f3c7a8;color:#8a3b0e;border-radius:12px;padding:10px 14px;font-size:.84rem}
+  .legend{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 4px;font-size:.76rem}
+  .lg{font-family:'JetBrains Mono',monospace;padding:3px 9px;border-radius:999px;border:1px solid var(--line)}
+  .lg.q{background:var(--blue-soft);color:#1d4ed8;border-color:#cfe0fd}
+  .lg.i{background:#f3ecfb;color:#6d28d9;border-color:#e0d0f5}
+  .lg.r{background:var(--orange-soft);color:#b4460f;border-color:#f3c7a8}
+  .lg.g{background:#eef1f4;color:#475569;border-color:#dbe2ea}
+  .bar{position:sticky;top:0;z-index:50;background:rgba(247,246,243,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 -18px 26px;padding:11px 18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .bar .score{font-family:'Space Grotesk';font-weight:700;font-size:1.05rem}
+  .bar .prog{flex:1;min-width:120px;height:8px;background:#e6e3dc;border-radius:999px;overflow:hidden}
+  .bar .prog>i{display:block;height:100%;width:0;background:var(--blue);transition:width .25s}
+  button{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.85rem;border:1px solid var(--line);background:#fff;color:var(--ink);padding:7px 13px;border-radius:9px;cursor:pointer;transition:.15s}
+  button:hover{border-color:var(--blue);color:var(--blue)}
+  button.primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+  button.primary:hover{background:#1d4ed8;color:#fff}
+  .q{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0;box-shadow:var(--shadow)}
+  .qhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+  .qnum{font-family:'Space Grotesk';font-weight:700;color:var(--blue);font-size:1.05rem}
+  .tag{font-family:'JetBrains Mono',monospace;font-size:11px;padding:2px 8px;border-radius:999px;background:#eee9df;color:#6a634f}
+  .src{font-family:'JetBrains Mono',monospace;font-size:11px;padding:2px 8px;border-radius:999px;margin-left:auto}
+  .src.q{background:var(--blue-soft);color:#1d4ed8}
+  .src.i{background:#f3ecfb;color:#6d28d9}
+  .src.r{background:var(--orange-soft);color:#b4460f}
+  .src.g{background:#eef1f4;color:#475569}
+  .qtext{font-size:1.02rem;margin:4px 0 12px}
+  .choices{display:flex;flex-direction:column;gap:8px}
+  .choice{display:flex;gap:10px;align-items:flex-start;padding:10px 13px;border:1px solid var(--line);border-radius:10px;cursor:pointer;transition:.12s;background:#fff}
+  .choice:hover{border-color:#c9c4b6;background:#fbfaf7}
+  .choice .k{font-family:'JetBrains Mono',monospace;font-weight:500;color:var(--muted);flex-shrink:0}
+  .choice.sel{border-color:var(--blue);background:var(--blue-soft)}
+  .choice.correct{border-color:var(--green);background:var(--green-soft)}
+  .choice.wrong{border-color:var(--red);background:var(--red-soft)}
+  .choice.locked{cursor:default}
+  .actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+  .reveal{margin-top:12px;border-top:1px dashed var(--line);padding-top:12px;display:none}
+  .reveal.show{display:block}
+  .reveal .lab{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);font-weight:600}
+  .hint{margin-top:10px;background:#fff8ef;border:1px solid #f3d9b5;border-radius:9px;padding:9px 13px;font-size:.9rem;display:none}
+  .hint.show{display:block}
+  .verdict{font-family:'Space Grotesk';font-weight:700;font-size:.9rem;margin-top:10px}
+  .verdict.ok{color:var(--green)}.verdict.no{color:var(--red)}
+  .summary{background:var(--card);border:2px solid var(--blue);border-radius:14px;padding:22px;margin:24px 0;display:none}
+  .summary.show{display:block}
+  .summary h2{font-family:'Space Grotesk';margin:0 0 8px}
+  .breakdown{font-size:.88rem;color:var(--muted);margin-top:8px}
+  footer{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
+
+
+/* ---- combined-view additions ---- */
+.viewswitch{position:sticky;top:0;z-index:60;background:rgba(247,246,243,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;gap:8px;align-items:center;padding:10px 18px}
+.viewswitch .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.95rem;margin-right:auto}
+.viewswitch .brand span{color:var(--blue)}
+.viewswitch button{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.85rem;border:1px solid var(--line);background:#fff;color:var(--ink);padding:7px 14px;border-radius:9px;cursor:pointer;transition:.15s}
+.viewswitch button:hover{border-color:var(--blue);color:var(--blue)}
+.viewswitch button.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.view{max-width:940px;margin:0 auto;padding:0 20px 120px}
+.view[hidden]{display:none}
+#view-exam{max-width:820px;padding:0 18px 140px}
+#view-guide nav.toc{position:static;top:auto;margin-top:0}
+#view-exam .bar{top:49px}
+
+</style>
+</head>
+<body>
+
+<div class="viewswitch">
+  <div class="brand">PHY 2049 · <span>§7.1–9.4</span></div>
+  <button id="tab-guide" class="active" onclick="showView('guide')">Study Guide</button>
+  <button id="tab-exam" onclick="showView('exam')">Practice Exam</button>
+</div>
+
+<div class="view" id="view-guide">
+<header class="hero">
+  <div class="eyebrow">PHY 2049 · Electricity &amp; Magnetism</div>
+  <h1>Study Guide — Electric Potential, Capacitance &amp; Current</h1>
+  <p class="sub">OpenStax <em>University Physics Vol. 2</em>, §7.1 → §9.4. Everything that matters for potential energy, potential, fields from potential, equipotentials, capacitors, dielectrics, current, resistance, and Ohm's law — with a formula sheet, worked examples, and live calculators.</p>
+  <div class="disc"><strong>Self-study aid only.</strong> Built from your textbook range plus your professor's iClicker/quiz/review material. Not for use on graded work.</div>
+</header>
+
+<nav class="toc">
+  <a href="#c7">Ch 7 · Potential</a>
+  <a href="#c8">Ch 8 · Capacitance</a>
+  <a href="#c9">Ch 9 · Current</a>
+  <a href="#ref">Formula Sheet</a>
+  <a href="#calc">Calculators</a>
+  <a href="#traps">Common Traps</a>
+</nav>
+
+<!-- ================= CHAPTER 7 ================= -->
+<section id="c7">
+<div class="chap"><span class="n">Chapter 7</span> — Electric Potential</div>
+
+<h3><span class="sec">§7.1</span>Electric Potential Energy</h3>
+<p>The electrostatic force is <strong>conservative</strong>, so it has a potential energy. The work done <em>by</em> the field moving a charge from A to B equals the drop in potential energy:</p>
+<div class="eq">$$ W_{A\to B} = -\Delta U = U_A - U_B $$</div>
+<p>For a pair of point charges separated by distance $r$:</p>
+<div class="eq">$$ U_{12} = \dfrac{k\,q_1 q_2}{r}, \qquad k = 8.99\times10^{9}\ \text{N·m}^2/\text{C}^2 $$</div>
+<ul>
+  <li><strong>Sign matters.</strong> Like charges ($q_1q_2>0$) → $U>0$ (positive, repulsive). Opposite charges → $U<0$ (bound). This is the whole point of iClicker "same-sign → PE positive."</li>
+  <li>The reference is $U=0$ at $r\to\infty$. Moving a charge from $r_1$ to $r_2$: $\Delta U = kq_1q_2\!\left(\tfrac{1}{r_2}-\tfrac{1}{r_1}\right)$.</li>
+  <li>If $r_2>r_1$, the term $\left(\tfrac{1}{r_2}-\tfrac{1}{r_1}\right)$ is <strong>negative</strong> — a lecture iClicker favorite.</li>
+</ul>
+<div class="keybox"><span class="lab">Electron-volt</span>
+<p style="margin:.3em 0 0">1 eV = the energy an electron (or any charge of magnitude $e$) gains accelerating through a potential difference of 1 volt: $1\ \text{eV} = e(1\,\text{V}) = 1.602\times10^{-19}\ \text{J}$. It is a unit of <strong>energy</strong>, not force or mass.</p></div>
+
+<h3><span class="sec">§7.2</span>Electric Potential &amp; Potential Difference</h3>
+<p>Potential is potential energy <em>per unit charge</em> — a property of the field, independent of the test charge:</p>
+<div class="eq">$$ V = \dfrac{U}{q}, \qquad \Delta V = \dfrac{\Delta U}{q} = \dfrac{W_{\text{by field}}}{q}\ \text{(sign care)}, \qquad [V] = \dfrac{\text{J}}{\text{C}} = \text{volt} $$</div>
+<ul>
+  <li>A <strong>positive</strong> charge speeds up moving from high→low potential (loses PE, gains KE). A <strong>negative</strong> charge (electron, proton is positive) does the opposite: a proton's KE <em>decreases</em> going low→high voltage.</li>
+  <li>$\Delta(\text{KE}) = q\,\Delta V$. Across 25 V, an electron and proton each change energy by $\pm 25$ eV — but "electron gains 25 J" is false (it's 25 eV, and the sign depends on direction), which is why the iClicker answer was "neither."</li>
+</ul>
+
+<h3><span class="sec">§7.3</span>Calculating Potential from Charge</h3>
+<div class="eq">$$ V(r) = \dfrac{kq}{r}\quad\text{(point charge)}, \qquad V = k\sum_i \dfrac{q_i}{r_i}\quad\text{(superposition)}, \qquad V = k\!\int \dfrac{dq}{r}\quad\text{(continuous)} $$</div>
+<ul>
+  <li>$V$ is a <strong>scalar</strong> — add potentials directly, no vector components. Much easier than adding fields.</li>
+  <li>For a single point charge, $V\to 0$ as $r\to\infty$. So yes, there is a location where the point-charge potential is (approaches) zero: infinitely far away.</li>
+  <li><strong>Dipole:</strong> $V$ is positive near $+q$, negative near $-q$, and zero on the perpendicular bisector.</li>
+</ul>
+
+<h3><span class="sec">§7.4</span>Determining Field from Potential</h3>
+<p>The field is the <strong>negative gradient</strong> of the potential — this is the inverse of integrating $\vec E$ to get $V$:</p>
+<div class="eq">$$ \vec E = -\nabla V = -\left(\dfrac{\partial V}{\partial x}\hat i + \dfrac{\partial V}{\partial y}\hat j + \dfrac{\partial V}{\partial z}\hat k\right) $$</div>
+<ul>
+  <li>Uniform field / parallel plates: $E = \dfrac{\Delta V}{d}$ (magnitude), field points from <strong>high to low</strong> potential.</li>
+  <li>iClicker: "potential decreases uniformly east→west" ⇒ $\partial V/\partial x$ constant ⇒ $\vec E$ <strong>uniform, pointing west</strong> (toward decreasing $V$... field points toward lower potential, i.e. from east high to west low → points west). Uniform because the gradient is constant.</li>
+  <li>The gradient operator's $x$-component is $\hat i\,\partial/\partial x$.</li>
+</ul>
+
+<h3><span class="sec">§7.5</span>Equipotential Surfaces &amp; Conductors</h3>
+<ul>
+  <li>Equipotentials are surfaces of constant $V$; $\vec E$ is always <strong>perpendicular</strong> to them.</li>
+  <li>No work is done moving a charge along an equipotential → two points at the <strong>same potential have no net field line connecting them</strong> along that surface.</li>
+  <li><strong>Point charge:</strong> equipotentials are concentric <strong>spheres</strong>. <strong>Infinite line charge:</strong> coaxial <strong>cylinders</strong>. <strong>Uniform field:</strong> parallel planes.</li>
+  <li>Closer equipotential spacing ⇒ steeper gradient ⇒ <strong>stronger field</strong>. Equal spacing would mean uniform field — a point charge's equipotentials are <em>not</em> equally spaced, so the "perfect cone" topographic map fails.</li>
+  <li><strong>Conductors (electrostatic):</strong> $\vec E = 0$ inside; the entire conductor (surface + interior) is one equipotential; excess charge sits on the surface; $\vec E$ just outside is perpendicular to the surface. "Charge on the surface" does <em>not</em> mean all conduction electrons live on the surface — only the tiny net excess does.</li>
+</ul>
+</section>
+
+<!-- ================= CHAPTER 8 ================= -->
+<section id="c8">
+<div class="chap"><span class="n">Chapter 8</span> — Capacitance</div>
+
+<h3><span class="sec">§8.1</span>Capacitors &amp; Capacitance</h3>
+<div class="eq">$$ C = \dfrac{Q}{V}, \qquad [C] = \dfrac{\text{C}}{\text{V}} = \text{farad (F)}, \qquad C_{\parallel\text{-plate}} = \dfrac{\varepsilon_0 A}{d} $$</div>
+<ul>
+  <li>A capacitor "with charge $Q$" carries $+Q$ on one plate and $-Q$ on the other — net charge zero. "$Q$" refers to the magnitude on each plate.</li>
+  <li>Capacitance depends <strong>only on geometry and the dielectric</strong>: plate area $A$, separation $d$, and the filling material. It does <strong>not</strong> depend on the metal type, the applied voltage, or gravitational PE.</li>
+  <li>$\varepsilon_0 = 8.854\times10^{-12}\ \text{F/m}$. Field lines inside a parallel-plate capacitor are <strong>perpendicular to the plates</strong>, running from the $+$ plate to the $-$ plate.</li>
+  <li>Same $Q$ and same $V$ but smaller $d$ ⇒ larger $E=V/d$ ⇒ stronger field in the narrower gap.</li>
+</ul>
+
+<h3><span class="sec">§8.2</span>Capacitors in Series &amp; Parallel</h3>
+<table class="ref">
+<tr><th></th><th>Parallel</th><th>Series</th></tr>
+<tr><td>Same across each</td><td>Voltage $V$</td><td>Charge $Q$</td></tr>
+<tr><td>Adds up</td><td>Charge: $Q=\sum Q_i$</td><td>Voltage: $V=\sum V_i$</td></tr>
+<tr><td>Equivalent</td><td>$C_{eq}=\sum C_i$</td><td>$\dfrac{1}{C_{eq}}=\sum\dfrac{1}{C_i}$</td></tr>
+<tr><td>Result vs individuals</td><td>Larger than any one</td><td>Smaller than the smallest</td></tr>
+</table>
+<ul>
+  <li><strong>Parallel:</strong> all capacitors share the same voltage, so the one with the <strong>largest $C$ holds the most charge</strong> ($Q=CV$).</li>
+  <li>Mixed networks: collapse parallel groups first (add), then series groups (reciprocals), working inward to the source.</li>
+</ul>
+
+<h3><span class="sec">§8.3</span>Energy Stored in a Capacitor</h3>
+<div class="eq">$$ U = \tfrac12 QV = \tfrac12 CV^2 = \dfrac{Q^2}{2C}, \qquad u = \tfrac12 \varepsilon_0 E^2\ \text{(energy density, J/m}^3) $$</div>
+<p>The factor of $\tfrac12$ comes from integrating as charge accumulates — you don't move all the charge across the full voltage at once. Energy is stored in the <strong>electric field</strong> itself.</p>
+
+<h3><span class="sec">§8.4</span>Capacitor with a Dielectric</h3>
+<div class="eq">$$ C = \kappa\,C_0, \qquad \kappa \ge 1\ \text{(dielectric constant)} $$</div>
+<p>A dielectric raises capacitance by a factor $\kappa$. What happens to $Q$ and $V$ depends on the circuit:</p>
+<ul>
+  <li><strong>Battery disconnected</strong> ($Q$ fixed): inserting the dielectric raises $C$, so $V=Q/C$ <strong>drops</strong> and stored energy decreases (the slab is pulled in).</li>
+  <li><strong>Battery connected</strong> ($V$ fixed): $C$ rises, so $Q=CV$ <strong>increases</strong> and stored energy increases.</li>
+  <li>Dielectrics also raise the breakdown voltage a capacitor can tolerate.</li>
+</ul>
+
+<h3><span class="sec">§8.5</span>Molecular Model of a Dielectric</h3>
+<ul>
+  <li>An external field <strong>polarizes</strong> the dielectric — molecular dipoles align (or are induced).</li>
+  <li>The aligned dipoles create <strong>bound surface charge</strong> whose field opposes the applied field, reducing the net field inside to $E = E_0/\kappa$.</li>
+  <li>Smaller net field ⇒ smaller voltage for the same charge ⇒ higher capacitance. That's the microscopic reason $C=\kappa C_0$.</li>
+</ul>
+
+<div class="card"><span class="pill">disconnect-the-battery scenario</span>
+<p style="margin:.4em 0 0">A charged parallel-plate capacitor <em>after the battery is removed</em>: the stored charges <strong>stay put</strong> (nowhere to go until a circuit reconnects), and the field between the plates is <strong>static and unchanging</strong>. Reconnect it to a load (a tiny resistive heater, say) and current <strong>flows</strong> — the stored energy discharges and the load does something (warms up). This is the bridge from Ch 8 into Ch 9.</p></div>
+</section>
+
+<!-- ================= CHAPTER 9 ================= -->
+<section id="c9">
+<div class="chap"><span class="n">Chapter 9</span> — Current &amp; Resistance</div>
+
+<h3><span class="sec">§9.1</span>Electrical Current</h3>
+<div class="eq">$$ I = \dfrac{dQ}{dt}, \qquad [I] = \dfrac{\text{C}}{\text{s}} = \text{ampere (A)} $$</div>
+<ul>
+  <li>In a metal wire, the actual moving charges are <strong>electrons only</strong> (the positive ions are locked in the lattice).</li>
+  <li><strong>Conventional current</strong> is defined as the direction <em>positive</em> charge would flow — opposite to the electrons' actual drift. It's a sign convention, not literal proton motion.</li>
+  <li>Total charge from steady current: $Q = I\,t$ ⇒ time to move a charge is $t = Q/I$.</li>
+</ul>
+
+<h3><span class="sec">§9.2</span>Model of Conduction in Metals</h3>
+<div class="eq">$$ I = n\,q\,A\,v_d, \qquad J = \dfrac{I}{A} = n q v_d\ \text{(current density)} $$</div>
+<ul>
+  <li>$n$ = charge-carrier density, $A$ = cross-section, $v_d$ = <strong>drift velocity</strong>.</li>
+  <li>Drift speed is tiny — on the order of <strong>mm/s</strong> (e.g. ~0.77 mm/s), even though the signal and the random thermal speeds are enormous. Electrons don't zip down the wire; the field pushes the whole sea slowly.</li>
+  <li>Number of carriers per second past a point $= I/q$ (e.g. electrons/s $=I/e$).</li>
+</ul>
+
+<h3><span class="sec">§9.3</span>Resistivity &amp; Resistance</h3>
+<div class="eq">$$ R = \rho\dfrac{L}{A}, \qquad \sigma = \dfrac{1}{\rho}, \qquad \rho(T) = \rho_0\big[1+\alpha(T-T_0)\big] $$</div>
+<ul>
+  <li><strong>Resistivity $\rho$</strong> is a material property (Ω·m); <strong>resistance $R$</strong> depends on the material <em>and</em> geometry (longer → more $R$, thicker → less $R$).</li>
+  <li>For most metals $\rho$ rises with temperature ($\alpha>0$).</li>
+</ul>
+
+<h3><span class="sec">§9.4</span>Ohm's Law</h3>
+<div class="eq">$$ V = I\,R \qquad\Longleftrightarrow\qquad R = \dfrac{V}{I} $$</div>
+<ul>
+  <li>A device is <strong>ohmic</strong> if $R$ is constant — its $I$–$V$ graph is a <strong>straight line through the origin</strong>. The slope is $1/R$.</li>
+  <li>Non-ohmic devices (diodes, filaments) have curved $I$–$V$ graphs. On an $I$–$V$ plot, pick the <em>linear</em> one as ohmic and read $R$ from its slope.</li>
+</ul>
+</section>
+
+<!-- ================= FORMULA SHEET ================= -->
+<section id="ref">
+<div class="chap">Formula Sheet</div>
+<table class="ref">
+<tr><th>Quantity</th><th>Formula</th></tr>
+<tr><td>Point-charge PE</td><td>$U_{12}=kq_1q_2/r$</td></tr>
+<tr><td>Change in PE (radial)</td><td>$\Delta U = kq_1q_2(1/r_2-1/r_1)$</td></tr>
+<tr><td>Electron-volt</td><td>$1\,\text{eV}=1.602\times10^{-19}\,\text{J}$</td></tr>
+<tr><td>Potential (definition)</td><td>$V=U/q$; &nbsp; $\Delta(\text{KE})=q\,\Delta V$</td></tr>
+<tr><td>Point-charge potential</td><td>$V=kq/r$; &nbsp; superpose scalars</td></tr>
+<tr><td>Field from potential</td><td>$\vec E=-\nabla V$; &nbsp; $E=\Delta V/d$ (uniform)</td></tr>
+<tr><td>Capacitance</td><td>$C=Q/V$; &nbsp; $C=\varepsilon_0 A/d$; &nbsp; $C=\kappa C_0$</td></tr>
+<tr><td>Series / parallel $C$</td><td>$1/C_{eq}=\sum 1/C_i$ &nbsp;/&nbsp; $C_{eq}=\sum C_i$</td></tr>
+<tr><td>Stored energy</td><td>$U=\tfrac12 CV^2=\tfrac12 QV=Q^2/2C$</td></tr>
+<tr><td>Energy density</td><td>$u=\tfrac12\varepsilon_0 E^2$</td></tr>
+<tr><td>Current</td><td>$I=dQ/dt$; &nbsp; $I=nqAv_d$</td></tr>
+<tr><td>Resistance</td><td>$R=\rho L/A$</td></tr>
+<tr><td>Ohm's law</td><td>$V=IR$</td></tr>
+<tr><td>Constants</td><td>$k=8.99\times10^{9}$, &nbsp; $\varepsilon_0=8.854\times10^{-12}$, &nbsp; $e=1.602\times10^{-19}$</td></tr>
+</table>
+</section>
+
+<!-- ================= WORKED EXAMPLES ================= -->
+<section>
+<div class="chap">Worked Examples</div>
+
+<div class="worked">
+<span class="tag">§7.1 · potential energy change</span>
+<p><strong>Q.</strong> $q_1=-0.90\times10^{-5}$ C at the origin; $q_2=+0.70\times10^{-5}$ C moves from $B(23,0)$ cm to $P(0,-29)$ cm. Find $\Delta U$.</p>
+<p><strong>Solve.</strong> Only the distance from $q_1$ matters. $r_B=0.23$ m, $r_P=0.29$ m.
+$\Delta U = kq_1q_2\!\left(\tfrac1{r_P}-\tfrac1{r_B}\right)$. Both charges plug in with sign: $q_1q_2=-6.3\times10^{-11}$, and $(1/0.29-1/0.23)=-0.900$.
+$\Delta U = (8.99\times10^9)(-6.3\times10^{-11})(-0.900) \approx \boxed{+0.509\ \text{J}}$.</p>
+</div>
+
+<div class="worked">
+<span class="tag">§7.1 · work to assemble</span>
+<p><strong>Q.</strong> Work to bring an electron from infinity to $r=0.529\times10^{-10}$ m from a proton (hydrogen ground state).</p>
+<p><strong>Solve.</strong> $W_{\text{ext}}=\Delta U = U_f-0 = \dfrac{k(e)(-e)}{r} = \dfrac{(8.99\times10^9)(1.602\times10^{-19})^2}{-\,0.529\times10^{-10}}$ (with opposite signs)
+$= -4.36\times10^{-18}\ \text{J} = \boxed{-27.2\ \text{eV}}$. Negative → the system releases energy as the electron falls in.</p>
+</div>
+
+<div class="worked">
+<span class="tag">§8.2 · mixed network</span>
+<p><strong>Q.</strong> $C_{10}=3.1$, $C_{11}=9.9$ (in parallel), then in series with $C_{12}=9.5$ and $C_{13}=7.2\ \mu$F. Find $C_{eq}$.</p>
+<p><strong>Solve.</strong> Parallel pair: $C_{10}+C_{11}=13.0\ \mu$F. Then all three in series:
+$\dfrac1{C_{eq}}=\dfrac1{13.0}+\dfrac1{9.5}+\dfrac1{7.2}=0.32108$ ⇒ $C_{eq}=\boxed{3.1145\ \mu\text{F}}$.</p>
+</div>
+
+<div class="worked">
+<span class="tag">§8.1 · Q = CV</span>
+<p><strong>Q.</strong> A $C=2.2$ nF capacitor at 630 V. Charge stored?</p>
+<p><strong>Solve.</strong> $Q=CV=(2.2\times10^{-9})(630)=\boxed{1.386\times10^{-6}\ \text{C}}$.</p>
+</div>
+
+<div class="worked">
+<span class="tag">§9.1 · charge and time</span>
+<p><strong>Q.</strong> A battery moves 6878 C at 0.612 mA. How long does it run?</p>
+<p><strong>Solve.</strong> $t=Q/I = 6878/(0.612\times10^{-3}) = 1.124\times10^{7}\ \text{s}$ (about 130 days).</p>
+</div>
+
+<div class="worked">
+<span class="tag">§9.3 · resistance of a wire</span>
+<p><strong>Q.</strong> 10 m of copper wire, 1.0 mm diameter ($\rho=1.68\times10^{-8}$ Ω·m). Resistance?</p>
+<p><strong>Solve.</strong> $A=\pi(0.5\times10^{-3})^2=7.85\times10^{-7}\,\text{m}^2$. $R=\rho L/A = (1.68\times10^{-8})(10)/(7.85\times10^{-7})\approx\boxed{0.214\ \Omega}$.</p>
+</div>
+</section>
+
+<!-- ================= CALCULATORS ================= -->
+<section id="calc">
+<div class="chap">Interactive Calculators</div>
+
+<div class="calc">
+<h4>Parallel-plate capacitor · $C=\kappa\varepsilon_0 A/d$</h4>
+<div class="row">
+  <div><label>Plate area A (m²)</label><input id="pp_A" type="number" value="0.02" step="0.001"></div>
+  <div><label>Separation d (mm)</label><input id="pp_d" type="number" value="1" step="0.1"></div>
+  <div><label>Dielectric κ</label><input id="pp_k" type="number" value="1" step="0.1"></div>
+</div>
+<div class="out" id="pp_out">C = —</div>
+</div>
+
+<div class="calc">
+<h4>Charge &amp; energy · $Q=CV$, &nbsp; $U=\tfrac12 CV^2$</h4>
+<div class="row">
+  <div><label>Capacitance C (µF)</label><input id="qe_C" type="number" value="470" step="1"></div>
+  <div><label>Voltage V (V)</label><input id="qe_V" type="number" value="12" step="0.5"></div>
+</div>
+<div class="out" id="qe_out">—</div>
+</div>
+
+<div class="calc">
+<h4>Series / parallel equivalent (comma-separated µF)</h4>
+<label>Capacitances</label>
+<input id="sp_vals" type="text" value="2, 3, 6">
+<div class="out" id="sp_out">—</div>
+</div>
+
+<div class="calc">
+<h4>Ohm's law · $V=IR$</h4>
+<div class="row">
+  <div><label>Voltage V (V)</label><input id="ohm_V" type="number" value="9" step="0.5"></div>
+  <div><label>Resistance R (Ω)</label><input id="ohm_R" type="number" value="220" step="1"></div>
+</div>
+<div class="out" id="ohm_out">—</div>
+</div>
+</section>
+
+<!-- ================= TRAPS ================= -->
+<section id="traps">
+<div class="chap">Common Traps</div>
+<div class="card">
+<ul>
+  <li><span class="warn">eV is energy, not force or mass.</span> $E=mc^2$ makes MeV/$c^2$ a mass unit, but MeV alone is energy.</li>
+  <li><span class="warn">$V=0$ does not mean $E=0$</span> (midpoint of a dipole) and <span class="warn">$E=0$ does not mean $V=0$</span> (inside a charged conductor). Potential and field are related by a derivative/integral, not equality.</li>
+  <li><span class="warn">Capacitance is fixed by geometry.</span> Changing the applied voltage does not change $C$ — it changes $Q$.</li>
+  <li><span class="warn">Series capacitors add reciprocally</span> (opposite of resistors in series). Parallel capacitors add directly.</li>
+  <li><span class="warn">Drift velocity is millimeters per second</span>, not the speed of light — that's the field/signal propagation, a different thing.</li>
+  <li><span class="warn">Conventional current ≠ electron motion.</span> Electrons carry the current in metals but flow opposite to the conventional-current arrow.</li>
+  <li><span class="warn">"Charge on a conductor's surface"</span> refers only to the net excess charge, not every conduction electron.</li>
+</ul>
+</div>
+</section>
+
+<footer>
+PHY 2049 · §7.1–9.4 · Content transcribed from OpenStax University Physics Vol. 2 and your professor-provided iClicker/quiz/exam-review material. Numeric results verified in Python. Personal study aid — not for graded submission.
+</footer>
+</div>
+
+<div class="view" id="view-exam" hidden>
+<header class="hero">
+  <div class="eyebrow">PHY 2049 · Practice Exam</div>
+  <h1>35-Question Practice Exam</h1>
+  <p class="sub">Electric Potential, Capacitance &amp; Current (§7.1–9.4). Every question carries a topic tag and its exact source. Select an answer, check it, and reveal a full worked solution.</p>
+  <div class="disc"><strong>Self-study only.</strong> Sourced from your professor's Canvas quizzes, lecture iClicker slides, and the Exam-2 review sheet, plus a few textbook-style items to cover Chapter 9. Not for graded work.</div>
+  <div class="legend">
+    <span class="lg q">Quiz — Canvas</span>
+    <span class="lg i">iClicker — lecture</span>
+    <span class="lg r">Exam-2 Review</span>
+    <span class="lg g">Textbook / Generated</span>
+  </div>
+</header>
+
+<div class="bar">
+  <span class="score" id="score">0 / 35</span>
+  <div class="prog"><i id="prog"></i></div>
+  <button id="revealAll">Reveal all solutions</button>
+  <button id="reset">Reset</button>
+  <button class="primary" id="grade">Grade exam</button>
+</div>
+
+<div id="exam"></div>
+
+<div class="summary" id="summary">
+  <h2 id="sumScore"></h2>
+  <div id="sumMsg"></div>
+  <div class="breakdown" id="sumBreak"></div>
+</div>
+
+<footer>
+Answers verified in Python (k=8.99×10⁹, ε₀=8.854×10⁻¹²). Sources cited per question. OpenStax University Physics Vol. 2, §7.1–9.4.
+</footer>
+</div>
+
+<script>
+// ---------- view switcher ----------
+function showView(which){
+  document.getElementById('view-guide').hidden = (which!=='guide');
+  document.getElementById('view-exam').hidden  = (which!=='exam');
+  document.getElementById('tab-guide').classList.toggle('active', which==='guide');
+  document.getElementById('tab-exam').classList.toggle('active', which==='exam');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+</script>
+
+<script>
+// ---------- practice-exam engine ----------
+
+const Q = [
+ {t:"Potential Energy", s:"q", src:"Quiz · html.html Q1", ch:7,
+  q:"What is an electron-volt (eV)?",
+  c:["The force exerted on an electron in a field of 1 N/C",
+     "The force needed to displace an electron by one meter",
+     "The energy acquired by a charge of magnitude e across a potential difference of 1 volt",
+     "The energy needed to move an electron one meter in a uniform field"],
+  a:2, hint:"eV is a unit of energy: charge × voltage.",
+  sol:"An electron-volt is the energy gained by a charge of magnitude $e$ moving through $\\Delta V = 1$ V: $1\\,\\text{eV} = (1.602\\times10^{-19}\\,\\text{C})(1\\,\\text{V}) = 1.602\\times10^{-19}\\,\\text{J}$. It is energy, not force."},
+
+ {t:"Units", s:"q", src:"Quiz · html.html Q8", ch:7,
+  q:"True or False: one electron-volt equals $1.602\\times10^{-19}$ joule.",
+  c:["True","False"], a:0, hint:"eV = e × 1 V.",
+  sol:"True. $1\\,\\text{eV}=e(1\\,\\text{V})=1.602\\times10^{-19}\\,\\text{J}$ by definition."},
+
+ {t:"Work–Energy", s:"i", src:"iClicker · phyq1", ch:7,
+  q:"What is the general formula for the work $W$ done by a force along a path?",
+  c:["$W=\\int_{x_1}^{x_2}\\vec F\\cdot\\hat n\\,dA$",
+     "$W=\\int_{x_1}^{x_2}\\vec F\\cdot\\hat i\\,dx$",
+     "$W=-\\int_{t_1}^{t_2}\\vec F\\cdot\\hat i\\,dt$",
+     "$W=-\\int_{x_1}^{x_2}\\vec F\\cdot\\hat i\\,dx$"],
+  a:1, hint:"Work integrates force over displacement, not area or time.",
+  sol:"Work is the line integral of force over displacement: $W=\\int \\vec F\\cdot d\\vec x$. Options with $dA$ (flux) or $dt$ (impulse) are the wrong quantities."},
+
+ {t:"Work–Energy", s:"i", src:"iClicker · phyq2", ch:7,
+  q:"In mechanics, what is work?",
+  c:["The change in momentum averaged over time",
+     "The amount of change in the kinetic energy of a system",
+     "Any integral over a specific spatial path",
+     "The same thing as the potential energy"],
+  a:1, hint:"Work–energy theorem.",
+  sol:"By the work–energy theorem, the net work on a system equals its change in kinetic energy, $W_{net}=\\Delta KE$."},
+
+ {t:"PE — sign", s:"i", src:"iClicker · phyq3", ch:7,
+  q:"For two points with $r_2>r_1$, is the term $\\left(\\dfrac{1}{r_2}-\\dfrac{1}{r_1}\\right)$ positive or negative?",
+  c:["Positive","Negative","Zero","Depends on the sign of q"],
+  a:1, hint:"Larger denominator → smaller fraction.",
+  sol:"Since $r_2>r_1$, $\\tfrac{1}{r_2}<\\tfrac{1}{r_1}$, so the difference is negative. This factor appears in $\\Delta U = kq_1q_2\\left(\\tfrac1{r_2}-\\tfrac1{r_1}\\right)$."},
+
+ {t:"PE — calculation", s:"q", src:"Quiz · html.html Q19", ch:7,
+  q:"$q_1=-0.90\\times10^{-5}$ C sits at the origin. $q_2=+0.70\\times10^{-5}$ C moves from $B(23,0)$ cm to $P(0,-29)$ cm. Find the change in potential energy.",
+  c:["$+0.509$ J","$+3.971$ J","$-1.53$ J","$-1.953$ J"],
+  a:0, hint:"Only distance from q₁ matters: r_B=0.23 m, r_P=0.29 m.",
+  sol:"$\\Delta U = kq_1q_2\\left(\\tfrac1{r_P}-\\tfrac1{r_B}\\right)$. With $q_1q_2=-6.3\\times10^{-11}$ and $(1/0.29-1/0.23)=-0.900$: $\\Delta U=(8.99\\times10^9)(-6.3\\times10^{-11})(-0.900)\\approx+0.509$ J."},
+
+ {t:"PE — calculation", s:"r", src:"Exam-2 Review Q3", ch:7,
+  q:"How much work is done bringing an electron from infinity to $r=0.529\\times10^{-10}$ m from a proton (the hydrogen radius)?",
+  c:["$+27.2$ eV","$-27.2$ eV","$-13.6$ eV","$0$ (conservative field)"],
+  a:1, hint:"W_ext = U_final − U_initial; opposite charges give negative U.",
+  sol:"$W_{ext}=\\Delta U = \\dfrac{k(e)(-e)}{r}=\\dfrac{(8.99\\times10^9)(1.602\\times10^{-19})^2}{-0.529\\times10^{-10}}\\approx-4.36\\times10^{-18}\\,\\text{J}=-27.2$ eV. Negative: the system releases energy as the electron falls in."},
+
+ {t:"PE — sign", s:"r", src:"Exam-2 Review Q2a", ch:7,
+  q:"Two charges have the same sign. Is the electric potential energy of the pair positive or negative?",
+  c:["Positive","Negative","Zero","Cannot be determined"],
+  a:0, hint:"U = kq₁q₂/r; same sign → product positive.",
+  sol:"$U=kq_1q_2/r$. Same-sign charges give $q_1q_2>0$, so $U>0$ — positive PE, consistent with mutual repulsion (energy stored pushing them together)."},
+
+ {t:"Potential", s:"q", src:"Quiz · html3 Q2", ch:7,
+  q:"A proton's kinetic energy will decrease as it moves in which generic direction?",
+  c:["From higher voltage to lower voltage",
+     "From lower voltage to higher voltage",
+     "From larger potential energy to smaller potential energy",
+     "It depends on nearby electrons"],
+  a:1, hint:"A positive charge gains PE (loses KE) moving to higher V.",
+  sol:"For a positive charge, $U=qV$ increases with $V$. Moving low→high $V$ raises PE, so KE falls (energy conservation). A proton slows going toward higher potential."},
+
+ {t:"eV / Energy", s:"i", src:"iClicker · phyq7", ch:7,
+  q:"The potential difference is 25 V from left to right. Which is true?",
+  c:["An electron gains 25 J moving left to right",
+     "A proton loses 25 J moving left to right",
+     "Both A and B are correct",
+     "Neither A nor B are correct"],
+  a:3, hint:"25 V of potential difference gives 25 eV, not 25 J — and check the signs.",
+  sol:"$\\Delta(KE)=\\pm e(25\\,\\text{V})=25$ eV $=4\\times10^{-18}$ J, not 25 J. Both A and B misstate the energy scale (and signs), so neither is correct."},
+
+ {t:"Potential", s:"q", src:"Quiz · html2 Q1 (matching)", ch:7,
+  q:"Which formula gives the electrostatic potential of a point charge?",
+  c:["$V=-\\int_S \\vec E\\cdot d\\vec s$","$U_{12}=kq_1q_2/r_{12}$","$V=kq/r$","$C_1+C_2+\\cdots+C_n$"],
+  a:2, hint:"Potential of a single point charge, scalar, falls as 1/r.",
+  sol:"$V=kq/r$ is the point-charge potential. The first choice is the general definition of potential, the second is pair potential energy, and the last is parallel capacitance."},
+
+ {t:"Field from Potential", s:"i", src:"iClicker · phyq6", ch:7,
+  q:"If integrating $\\vec E$ along a path gives $V(\\vec r)$, what operation on $V(\\vec r)$ recovers $\\vec E$?",
+  c:["A volume integral enclosing the path",
+     "Convert the integral into a limit",
+     "Replace it with a discrete sum along the path",
+     "Take the (negative) gradient of the potential, $\\vec E=-\\nabla V$"],
+  a:3, hint:"The inverse of integrating is differentiating — in 3D, the gradient.",
+  sol:"$\\vec E=-\\nabla V$. The field is the negative gradient of the potential, the vector generalization of $E_x=-\\,dV/dx$."},
+
+ {t:"Field from Potential", s:"q", src:"Quiz · html.html Q7 / html3 Q1", ch:7,
+  q:"In a region the electric potential decreases uniformly from east to west and does not vary otherwise. The electric field:",
+  c:["Points east and varies with position",
+     "Is uniform and points east",
+     "Points west and its magnitude changes across space",
+     "Points west and is uniform"],
+  a:3, hint:"E points toward decreasing V; a uniform gradient gives a uniform field.",
+  sol:"$\\vec E=-\\nabla V$ points toward lower potential — westward. A uniform (constant-slope) decrease means a constant gradient, so the field is uniform."},
+
+ {t:"Equipotentials", s:"q", src:"Quiz · html.html Q16", ch:7,
+  q:"The equipotential surfaces around an isolated point charge are:",
+  c:["Radial lines pointing outward","Concentric spheres centered on the charge","Parallel planes","Coaxial cylinders"],
+  a:1, hint:"V=kq/r depends only on distance r.",
+  sol:"$V=kq/r$ depends only on $r$, so surfaces of constant $V$ are spheres of constant radius — concentric spheres. Field lines (radial) are perpendicular to them."},
+
+ {t:"Equipotentials", s:"r", src:"Exam-2 Review Q5b", ch:7,
+  q:"If two points are at the same potential, are there electric field lines connecting them (along the equipotential)?",
+  c:["Yes, always","No — no field lines connect points at equal potential along the surface",
+     "Only if a conductor is present","Only in a uniform field"],
+  a:1, hint:"Field lines are perpendicular to equipotentials; moving along one does no work.",
+  sol:"Field lines are always perpendicular to equipotential surfaces, and no work is done moving a charge along an equipotential. So no field line runs between two points at the same potential along that surface."},
+
+ {t:"Equipotential Spacing", s:"i", src:"iClicker · screenshot 130322", ch:7,
+  q:"Would concentric, equally-spaced circles be a valid 'topographic map' of a point charge's potential (a perfect cone)?",
+  c:["Yes, because the fall lines are symmetric about the charge",
+     "No, because the equipotential lines of a point charge are not equally spaced",
+     "Impossible to determine without a test charge",
+     "Yes, because potential is spherically symmetric"],
+  a:1, hint:"V=kq/r changes fast near the charge and slowly far away.",
+  sol:"Because $V\\propto 1/r$, equal voltage steps land at unequal radial spacings — packed near the charge, spread out far away. Equal spacing (a cone) would imply a uniform field, which a point charge does not have. Closer spacing = stronger field."},
+
+ {t:"Field / Plates", s:"r", src:"Exam-2 Review Q1", ch:7,
+  q:"Two large plates carry equal and opposite charge, surface density magnitude $\\sigma=6.81\\times10^{-7}$ C/m². What is the field between them?",
+  c:["$7.69\\times10^{4}$ N/C","$3.85\\times10^{4}$ N/C","$6.02\\times10^{3}$ N/C","$1.54\\times10^{5}$ N/C"],
+  a:0, hint:"Between oppositely charged plates, E = σ/ε₀.",
+  sol:"For a parallel-plate arrangement the field between the plates is $E=\\sigma/\\varepsilon_0=(6.81\\times10^{-7})/(8.854\\times10^{-12})\\approx7.69\\times10^{4}$ N/C."},
+
+ {t:"Conductors", s:"r", src:"Exam-2 Review Q5d", ch:7,
+  q:"Excess charge on a conductor resides on its surface. Does this mean all the conduction electrons are on the surface?",
+  c:["Yes — all conduction electrons move to the surface",
+     "No — only the small net excess charge sits on the surface",
+     "Yes, but only for positive conductors",
+     "Only under an applied field"],
+  a:1, hint:"'Excess' means net charge, not every free electron.",
+  sol:"Only the net excess charge migrates to the surface. The vast sea of conduction electrons remains distributed throughout, neutralizing the positive ion lattice everywhere inside."},
+
+ {t:"Capacitance — units", s:"q", src:"Quiz · html.html Q6", ch:8,
+  q:"The farad is equivalent to:",
+  c:["J/V","V/J","C/V","N/C"],
+  a:2, hint:"C = Q/V.",
+  sol:"Capacitance $C=Q/V$, so $1\\,\\text{F}=1\\,\\text{C/V}$ (coulomb per volt)."},
+
+ {t:"Capacitance", s:"q", src:"Quiz · html.html Q14", ch:8,
+  q:"A capacitor described as having 'a charge Q' actually carries what charges on its two plates?",
+  c:["$Q,\\ Q$","$Q/2,\\ Q/2$","$Q,\\ -Q$","$Q,\\ 0$"],
+  a:2, hint:"Plates hold equal and opposite charge; net is zero.",
+  sol:"One plate holds $+Q$, the other $-Q$. The stated 'charge $Q$' is the magnitude on each plate; the capacitor as a whole is neutral."},
+
+ {t:"Capacitance", s:"q", src:"Quiz · html.html Q4 (adapted)", ch:8,
+  q:"Which of the following does NOT affect the capacitance of a parallel-plate capacitor?",
+  c:["The distance between the plates","The plate area",
+     "Whether the gap is vacuum or a dielectric","The type of metal used for the plates"],
+  a:3, hint:"C = ε₀A/d — geometry and dielectric only.",
+  sol:"$C=\\kappa\\varepsilon_0 A/d$ depends on area, separation, and the dielectric — pure geometry and material of the gap. The metal type (iron vs. copper) is irrelevant, as is gravity."},
+
+ {t:"Series / Parallel", s:"q", src:"Quiz · html.html Q13", ch:8,
+  q:"Several different capacitors are connected in parallel across a battery. Which must be true?",
+  c:["Each capacitor carries the same charge",
+     "The equivalent capacitance is less than any single one",
+     "The largest-capacitance capacitor has the most charge",
+     "The largest-capacitance capacitor has the largest voltage"],
+  a:2, hint:"Parallel → same V across each; Q = CV.",
+  sol:"In parallel every capacitor sees the same voltage $V$. Since $Q=CV$, the largest $C$ stores the most charge. (Parallel $C_{eq}=\\sum C_i$ is larger, not smaller, than any one.)"},
+
+ {t:"Capacitor Field", s:"q", src:"Quiz · html2 Q6", ch:8,
+  q:"The electric field lines inside a parallel-plate capacitor are:",
+  c:["Parallel to the plates","Perpendicular to the plates",
+     "From the negative plate to the positive plate","Present only after discharge"],
+  a:1, hint:"Field runs from + plate to − plate, straight across the gap.",
+  sol:"The field is uniform and perpendicular to the plates, directed from the positive plate to the negative plate."},
+
+ {t:"Capacitor Field", s:"i", src:"iClicker · screenshot 130506", ch:8,
+  q:"Two capacitors have equal plate area, equal charge, and equal voltage, but different separations: cap 1 has $d=1$ mm, cap 2 has $d=13.1$ mm. In which is the field $E$ stronger?",
+  c:["Cap 1 ($d=1$ mm)","Cap 2 ($d=13.1$ mm)","Equal in both","Need more data"],
+  a:0, hint:"E = V/d for the same V.",
+  sol:"With the same voltage, $E=V/d$ is larger for the smaller gap. Cap 1 (1 mm) has the stronger field — the potential drops over a shorter distance, so $\\Delta V/\\Delta x$ is steeper."},
+
+ {t:"Capacitance — calc", s:"i", src:"iClicker · screenshot 130633", ch:8,
+  q:"How much charge is stored on a $C=2.2\\times10^{-9}$ F capacitor at 630 V?",
+  c:["$2.2\\times10^{-9}$ C","$1.386\\times10^{-6}$ C","$286\\times10^{9}$ C","None of these"],
+  a:1, hint:"Q = CV.",
+  sol:"$Q=CV=(2.2\\times10^{-9}\\,\\text{F})(630\\,\\text{V})=1.386\\times10^{-6}$ C."},
+
+ {t:"Series / Parallel — calc", s:"i", src:"iClicker · screenshot 131223 (Network 3)", ch:8,
+  q:"$C_{10}=3.1$ and $C_{11}=9.9\\ \\mu$F are in parallel; that combination is in series with $C_{12}=9.5$ and $C_{13}=7.2\\ \\mu$F. Find $C_{eq}$.",
+  c:["$29.7\\ \\mu$F","$3.1145\\ \\mu$F","$13.0\\ \\mu$F","$1.72\\ \\mu$F"],
+  a:1, hint:"Add the parallel pair first, then combine three in series.",
+  sol:"Parallel: $C_{10}+C_{11}=13.0\\ \\mu$F. Series of the three: $\\dfrac1{C_{eq}}=\\dfrac1{13.0}+\\dfrac1{9.5}+\\dfrac1{7.2}=0.32108$, so $C_{eq}\\approx3.1145\\ \\mu$F."},
+
+ {t:"Energy Stored", s:"g", src:"Textbook §8.3 (generated)", ch:8,
+  q:"How much energy is stored in a $470\\ \\mu$F capacitor charged to 12 V?",
+  c:["$5.6$ mJ","$33.8$ mJ","$2.8$ mJ","$67.7$ mJ"],
+  a:1, hint:"U = ½CV².",
+  sol:"$U=\\tfrac12 CV^2=\\tfrac12(470\\times10^{-6})(12)^2=3.38\\times10^{-2}$ J $=33.8$ mJ."},
+
+ {t:"Dielectric", s:"g", src:"Textbook §8.4 (generated)", ch:8,
+  q:"A charged parallel-plate capacitor is disconnected from its battery, then a dielectric slab is inserted. What happens?",
+  c:["Q stays the same, C increases, V decreases",
+     "Q increases, C increases, V stays the same",
+     "Q decreases, C decreases, V increases",
+     "Nothing changes — the slab is neutral"],
+  a:0, hint:"Disconnected → Q is fixed. C = κC₀ rises.",
+  sol:"With the battery gone, $Q$ is fixed. Inserting the dielectric raises $C=\\kappa C_0$, so $V=Q/C$ drops (and stored energy falls — the slab is drawn in). If the battery stayed connected, $V$ would be fixed and $Q$ would rise instead."},
+
+ {t:"Capacitor → Current", s:"i", src:"iClicker · screenshot 130452", ch:9,
+  q:"After a charged capacitor is disconnected from the battery, what happens to the stored charge?",
+  c:["The charges reverse plates",
+     "The charges stay put until a circuit is reconnected",
+     "The charges leak away in one time constant τ",
+     "The charges spread evenly over both plates"],
+  a:1, hint:"No conducting path → nowhere for charge to go.",
+  sol:"With no external path, the separated charges have nowhere to flow, so they remain on the plates and the field stays static — until a circuit reconnects and current flows."},
+
+ {t:"Current", s:"q", src:"Quiz · html.html Q11", ch:9,
+  q:"When current flows through a metal wire, the moving charges are:",
+  c:["Only protons","Only electrons","Both protons and electrons","Positive metal ions"],
+  a:1, hint:"The lattice ions are fixed in place.",
+  sol:"In a metal, only the conduction electrons move; the positive ions are locked in the crystal lattice."},
+
+ {t:"Current", s:"q", src:"Quiz · html2 Q7", ch:9,
+  q:"'Conventional current' in a circuit refers to:",
+  c:["The drift velocity of actual electrons",
+     "The direction in which positive charge would flow",
+     "The flow of neutrons",
+     "Electrons moving from low to high potential"],
+  a:1, hint:"A sign convention — opposite to real electron motion.",
+  sol:"Conventional current is defined as the direction positive charge would move — opposite to the electrons that actually carry the current in a metal. It's a bookkeeping convention."},
+
+ {t:"Drift Velocity", s:"q", src:"Quiz · html2 Q3", ch:9,
+  q:"Which is a plausible drift velocity for conduction electrons in a wire?",
+  c:["0.77 mm/s","299,792,458 m/s","about 100 m/s","343 m/s"],
+  a:0, hint:"Drift speed is astonishingly slow — think mm/s.",
+  sol:"Drift velocity is on the order of mm/s (here 0.77 mm/s). The speed of light is signal propagation, not electron drift; the others are far too fast."},
+
+ {t:"Ohm's Law", s:"r", src:"Exam-2 Review Q7a", ch:9,
+  q:"Four devices are tested by sweeping voltage and measuring current. Which one is ohmic?",
+  c:["The device whose I–V curve bends upward",
+     "The device whose I–V graph is a straight line through the origin",
+     "The device with the highest current",
+     "The device with zero current at low voltage"],
+  a:1, hint:"Ohmic means constant R, so I ∝ V.",
+  sol:"An ohmic device obeys $V=IR$ with constant $R$, giving a straight-line $I$–$V$ graph through the origin (slope $1/R$). Curved graphs indicate non-ohmic behavior."},
+
+ {t:"Resistance — calc", s:"g", src:"Textbook §9.3 (generated)", ch:9,
+  q:"Find the resistance of 10 m of copper wire, 1.0 mm diameter ($\\rho=1.68\\times10^{-8}$ Ω·m).",
+  c:["$0.021\\ \\Omega$","$0.214\\ \\Omega$","$2.14\\ \\Omega$","$21.4\\ \\Omega$"],
+  a:1, hint:"R = ρL/A, with A = π r².",
+  sol:"$A=\\pi(0.5\\times10^{-3})^2=7.85\\times10^{-7}$ m². $R=\\rho L/A=(1.68\\times10^{-8})(10)/(7.85\\times10^{-7})\\approx0.214\\ \\Omega$."},
+
+ {t:"Ohm's Law — calc", s:"g", src:"Textbook §9.4 (generated)", ch:9,
+  q:"What current flows when 9.0 V is applied across a 220 Ω resistor?",
+  c:["$0.041$ mA","$40.9$ mA","$409$ mA","$24.4$ mA"],
+  a:1, hint:"I = V/R.",
+  sol:"$I=V/R=9.0/220=0.0409$ A $=40.9$ mA."}
+];
+
+const srcClass={q:"q",i:"i",r:"r",g:"g"};
+const exam=document.getElementById("exam");
+let graded=false;
+
+Q.forEach((item,i)=>{
+  const div=document.createElement("div");
+  div.className="q";div.dataset.idx=i;
+  const letters=["A","B","C","D","E"];
+  // shuffle choice order but remember correct
+  const order=item.c.map((_,k)=>k);
+  for(let j=order.length-1;j>0;j--){const r=Math.floor(Math.random()*(j+1));[order[j],order[r]]=[order[r],order[j]];}
+  let choicesHTML="";
+  order.forEach((origIdx,pos)=>{
+    choicesHTML+=`<div class="choice" data-correct="${origIdx===item.a}" data-q="${i}">
+      <span class="k">${letters[pos]}</span><span class="ctext">${item.c[origIdx]}</span></div>`;
+  });
+  div.innerHTML=`
+    <div class="qhead">
+      <span class="qnum">Q${i+1}</span>
+      <span class="tag">${item.t}</span>
+      <span class="tag">Ch ${item.ch}</span>
+      <span class="src ${srcClass[item.s]}">${item.src}</span>
+    </div>
+    <div class="qtext">${item.q}</div>
+    <div class="choices">${choicesHTML}</div>
+    <div class="actions">
+      <button class="hintBtn">Hint</button>
+      <button class="solBtn">Show solution</button>
+    </div>
+    <div class="hint"><strong>Hint:</strong> ${item.hint}</div>
+    <div class="reveal"><span class="lab">Solution</span><div class="soltext">${item.sol}</div></div>
+    <div class="verdict"></div>`;
+  exam.appendChild(div);
+});
+
+function updateScore(){
+  let correct=0,answered=0;
+  document.querySelectorAll(".q").forEach(q=>{
+    const sel=q.querySelector(".choice.sel");
+    if(sel){answered++;if(sel.dataset.correct==="true")correct++;}
+  });
+  document.getElementById("score").textContent=correct+" / "+Q.length;
+  document.getElementById("prog").style.width=(answered/Q.length*100)+"%";
+  return {correct,answered};
+}
+
+exam.addEventListener("click",e=>{
+  const ch=e.target.closest(".choice");
+  if(!ch)return;
+  const q=ch.closest(".q");
+  if(q.querySelector(".choice.locked"))return; // locked after grading of that q
+  q.querySelectorAll(".choice").forEach(c=>c.classList.remove("sel"));
+  ch.classList.add("sel");
+  // instant per-question feedback
+  markOne(q);
+  updateScore();
+});
+
+function markOne(q){
+  const sel=q.querySelector(".choice.sel");
+  if(!sel)return;
+  q.querySelectorAll(".choice").forEach(c=>{c.classList.remove("correct","wrong");c.classList.add("locked");});
+  const v=q.querySelector(".verdict");
+  if(sel.dataset.correct==="true"){
+    sel.classList.add("correct");v.textContent="✓ Correct";v.className="verdict ok";
+  }else{
+    sel.classList.add("wrong");
+    q.querySelector('.choice[data-correct="true"]').classList.add("correct");
+    v.textContent="✗ Not quite — correct answer highlighted";v.className="verdict no";
+  }
+  q.querySelector(".reveal").classList.add("show");
+}
+
+exam.addEventListener("click",e=>{
+  if(e.target.classList.contains("hintBtn")){
+    e.target.closest(".q").querySelector(".hint").classList.toggle("show");
+  }
+  if(e.target.classList.contains("solBtn")){
+    e.target.closest(".q").querySelector(".reveal").classList.toggle("show");
+  }
+});
+
+document.getElementById("revealAll").addEventListener("click",()=>{
+  document.querySelectorAll(".reveal").forEach(r=>r.classList.add("show"));
+});
+
+document.getElementById("grade").addEventListener("click",()=>{
+  const {correct,answered}=updateScore();
+  const pct=Math.round(correct/Q.length*100);
+  const sum=document.getElementById("summary");
+  document.getElementById("sumScore").textContent=`${correct} / ${Q.length}  (${pct}%)`;
+  let msg;
+  if(pct>=90)msg="Exam-ready. Solid across potential, capacitance, and current.";
+  else if(pct>=75)msg="Good — patch the few misses, especially any calculation slips.";
+  else if(pct>=60)msg="Passing range. Re-read the flagged sections in the study guide.";
+  else msg="Rework the study guide §7.1–9.4, then retake. Focus on the concepts you missed.";
+  document.getElementById("sumMsg").textContent=msg;
+  // breakdown by chapter
+  const byCh={7:[0,0],8:[0,0],9:[0,0]};
+  document.querySelectorAll(".q").forEach((q,i)=>{
+    const c=Q[i].ch;byCh[c][1]++;
+    const sel=q.querySelector(".choice.sel");
+    if(sel&&sel.dataset.correct==="true")byCh[c][0]++;
+  });
+  document.getElementById("sumBreak").innerHTML=
+    `By chapter — Ch 7 (Potential): ${byCh[7][0]}/${byCh[7][1]} · `+
+    `Ch 8 (Capacitance): ${byCh[8][0]}/${byCh[8][1]} · `+
+    `Ch 9 (Current): ${byCh[9][0]}/${byCh[9][1]}`+
+    (answered<Q.length?` · <span style="color:var(--orange)">${Q.length-answered} unanswered</span>`:"");
+  sum.classList.add("show");
+  sum.scrollIntoView({behavior:"smooth"});
+});
+
+document.getElementById("reset").addEventListener("click",()=>{location.reload();});
+</script>
+
+<script>
+// ---------- study-guide calculators + single KaTeX render for both views ----------
+
+document.addEventListener("DOMContentLoaded",function(){
+  renderMathInElement(document.body,{delimiters:[
+    {left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}
+  ],throwOnError:false});
+
+  const eps0=8.854e-12, num=id=>parseFloat(document.getElementById(id).value);
+  const sci=x=>{if(x===0)return "0";const e=Math.floor(Math.log10(Math.abs(x)));const m=x/Math.pow(10,e);return m.toFixed(3)+"e"+e;};
+
+  function pp(){const A=num("pp_A"),d=num("pp_d")/1000,k=num("pp_k");
+    if(!(A>0&&d>0&&k>0)){document.getElementById("pp_out").textContent="C = —";return;}
+    const C=k*eps0*A/d;document.getElementById("pp_out").textContent="C = "+sci(C)+" F  =  "+(C*1e12).toFixed(2)+" pF";}
+  function qe(){const C=num("qe_C")*1e-6,V=num("qe_V");
+    const Q=C*V,U=0.5*C*V*V;
+    document.getElementById("qe_out").textContent="Q = "+sci(Q)+" C   |   U = "+sci(U)+" J  =  "+(U*1000).toFixed(2)+" mJ";}
+  function sp(){const parts=document.getElementById("sp_vals").value.split(",").map(s=>parseFloat(s)).filter(x=>x>0);
+    if(!parts.length){document.getElementById("sp_out").textContent="—";return;}
+    const par=parts.reduce((a,b)=>a+b,0);
+    const ser=1/parts.reduce((a,b)=>a+1/b,0);
+    document.getElementById("sp_out").textContent="Parallel Ceq = "+par.toFixed(4)+" µF    |    Series Ceq = "+ser.toFixed(4)+" µF";}
+  function ohm(){const V=num("ohm_V"),R=num("ohm_R");
+    if(!(R>0)){document.getElementById("ohm_out").textContent="—";return;}
+    const I=V/R;document.getElementById("ohm_out").textContent="I = V/R = "+(I*1000).toFixed(2)+" mA   |   P = VI = "+(V*I).toFixed(3)+" W";}
+
+  ["pp_A","pp_d","pp_k"].forEach(id=>document.getElementById(id).addEventListener("input",pp));
+  ["qe_C","qe_V"].forEach(id=>document.getElementById(id).addEventListener("input",qe));
+  document.getElementById("sp_vals").addEventListener("input",sp);
+  ["ohm_V","ohm_R"].forEach(id=>document.getElementById(id).addEventListener("input",ohm));
+  pp();qe();sp();ohm();
+});
+
+</script>
+
+</body>
+</html>
